@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attestation de remise/restitution</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .signature-table {
+            margin-top: 30px;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+        .signature-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .equipment-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Attestation de remise/restitution du matériel informatique</h2>
+        
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="name">Prénom & Nom</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="direction">Direction</label>
+                <input type="text" class="form-control" id="direction" name="direction" required>
+            </div>
+            <div class="form-group">
+                <label for="site">Site de l'agent</label>
+                <input type="text" class="form-control" id="site" name="site" required>
+            </div>
+            <div class="form-group">
+                <label for="matricule">Matricule agent</label>
+                <input type="text" class="form-control" id="matricule" name="matricule" required>
+            </div>
+
+            <h5 class="section-title">1. Attribution du matériel informatique :</h5>
+            <div class="form-group">
+                <label for="equipment_status">Statut du matériel</label>
+                <select class="form-control" id="equipment_status" name="equipment_status" required>
+                    <option value="Attribué">Attribué</option>
+                    <option value="Restitué">Restitué</option>
+                </select>
+            </div>
+
+            <div class="equipment-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ordinateur" name="equipment" value="Ordinateur">
+                    <label class="form-check-label" for="ordinateur">Ordinateur</label>
+                </div>
+                <div class="form-group">
+                    <label for="serial_number_ordinateur">Numéro de série (Ordinateur)</label>
+                    <input type="text" class="form-control" id="serial_number_ordinateur" name="serial_number_ordinateur">
+                </div>
+                <div class="form-group">
+                    <label for="dsi_code_ordinateur">Code DSI (Ordinateur)</label>
+                    <input type="text" class="form-control" id="dsi_code_ordinateur" name="dsi_code_ordinateur">
+                </div>
+            </div>
+
+            <div class="equipment-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="telephone" name="equipment" value="Téléphone">
+                    <label class="form-check-label" for="telephone">Téléphone</label>
+                </div>
+                <div class="form-group">
+                    <label for="serial_number_telephone">Numéro de série (Téléphone)</label>
+                    <input type="text" class="form-control" id="serial_number_telephone" name="serial_number_telephone">
+                </div>
+                <div class="form-group">
+                    <label for="dsi_code_telephone">Code DSI (Téléphone)</label>
+                    <input type="text" class="form-control" id="dsi_code_telephone" name="dsi_code_telephone">
+                </div>
+            </div>
+
+            <div class="equipment-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="imprimante" name="equipment" value="Imprimante">
+                    <label class="form-check-label" for="imprimante">Imprimante</label>
+                </div>
+                <div class="form-group">
+                    <label for="serial_number_imprimante">Numéro de série (Imprimante)</label>
+                    <input type="text" class="form-control" id="serial_number_imprimante" name="serial_number_imprimante">
+                </div>
+                <div class="form-group">
+                    <label for="dsi_code_imprimante">Code DSI (Imprimante)</label>
+                    <input type="text" class="form-control" id="dsi_code_imprimante" name="dsi_code_imprimante">
+                </div>
+            </div>
+
+            <div class="equipment-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="casque" name="equipment" value="Casque audio">
+                    <label class="form-check-label" for="casque">Casque audio</label>
+                </div>
+                <div class="form-group">
+                    <label for="serial_number_casque">Numéro de série (Casque audio)</label>
+                    <input type="text" class="form-control" id="serial_number_casque" name="serial_number_casque">
+                </div>
+                <div class="form-group">
+                    <label for="dsi_code_casque">Code DSI (Casque audio)</label>
+                    <input type="text" class="form-control" id="dsi_code_casque" name="dsi_code_casque">
+                </div>
+            </div>
+
+            <div class="equipment-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="autre" name="equipment" value="Autre">
+                    <label class="form-check-label" for="autre">Autre</label>
+                </div>
+                <div class="form-group">
+                    <label for="serial_number_autre">Numéro de série (Autre)</label>
+                    <input type="text" class="form-control" id="serial_number_autre" name="serial_number_autre">
+                </div>
+                <div class="form-group">
+                    <label for="dsi_code_autre">Code DSI (Autre)</label>
+                    <input type="text" class="form-control" id="dsi_code_autre" name="dsi_code_autre">
+                </div>
+            </div>
+
+            <h5 class="section-title">2. Accompagnement des agents :</h5>
+            <p><strong>Tous les éléments doivent être vérifiés :</strong></p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="doc_nouvel" name="support_steps" value="Documentation nouvel arrivant">
+                <label class="form-check-label" for="doc_nouvel">Documentation nouvel arrivant</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="charte_info" name="support_steps" value="Charte informatique">
+                <label class="form-check-label" for="charte_info">Charte informatique</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="support_contact" name="support_steps" value="Comment contacter le support informatique">
+                <label class="form-check-label" for="support_contact">Comment contacter le support informatique</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="sensibilisation_donnees" name="support_steps" value="Sensibilisation aux données">
+                <label class="form-check-label" for="sensibilisation_donnees">Sensibilisation aux données</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="presentation_365" name="support_steps" value="Présentation de la suite Office 365">
+                <label class="form-check-label" for="presentation_365">Présentation de la suite Office 365</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="presentation_intranet" name="support_steps" value="Présentation de l'intranet Vikings">
+                <label class="form-check-label" for="presentation_intranet">Présentation de l'intranet Vikings</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="verification_compte" name="support_steps" value="Vérification du compte informatique">
+                <label class="form-check-label" for="verification_compte">Vérification du compte informatique</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="badge_impression" name="support_steps" value="Configuration badge impression">
+                <label class="form-check-label" for="badge_impression">Configuration badge impression</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="demande_logiciels" name="support_steps" value="Information sur les demandes de logiciels">
+                <label class="form-check-label" for="demande_logiciels">Information sur les demandes de logiciels</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="double_auth" name="support_steps" value="Configuration de la double authentification">
+                <label class="form-check-label" for="double_auth">Configuration de la double authentification</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="renseignement_matricule" name="support_steps" value="Renseignement du matricule et données agent">
+                <label class="form-check-label" for="renseignement_matricule">Renseignement du matricule et données agent</label>
+            </div>
+
+            <h5 class="section-title">3. Lors de la restitution du matériel :</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="sauvegarde" name="return_steps" value="Sauvegarde des données">
+                <label class="form-check-label" for="sauvegarde">Sauvegarde des données</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="avertissement" name="return_steps" value="Avertissement sur accès aux données pro par hiérarchie">
+                <label class="form-check-label" for="avertissement">Avertissement sur accès aux données pro par hiérarchie</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="message_absence" name="return_steps" value="Message d'absence dans la messagerie">
+                <label class="form-check-label" for="message_absence">Message d'absence dans la messagerie</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="renvoi_ligne" name="return_steps" value="Renvoi de ligne téléphonique">
+                <label class="form-check-label" for="message_absence">Renvoi de ligne téléphonique</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="resi_ligne" name="return_steps" value="Résiliation abonnement téléphonie mobile">
+                <label class="form-check-label" for="message_absence">Résiliation abonnement téléphonie mobile</label>
+            </div>
+            <table class="signature-table">
+                <tr>
+                    <td>Date</td>
+                    <td>Signature du technicien</td>
+                    <td>Signature de l'agent</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="date" required></td>
+                    <td><input type="text" class="form-control" name="tech_signature" required></td>
+                    <td><input type="text" class="form-control" name="agent_signature" required></td>
+                </tr>
+            </table>
+
+            <button type="submit" class="btn btn-primary mt-3">Soumettre</button>
+        </form>
+    </div>
+</body>
+</html>
